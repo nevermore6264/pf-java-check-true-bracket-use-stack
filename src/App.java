@@ -7,26 +7,26 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         strExpr = scanner.nextLine();
 
-        Stack<Integer> ParentPos = new Stack<>();
+        Stack<Integer> parentPos = new Stack<>();
         for (int i = 0; i < strExpr.length(); i++) {
             if (strExpr.charAt(i) == '(') {
-                ParentPos.push(i);
+                parentPos.push(i);
             } else if (strExpr.charAt(i) == ')') {
-                if (!ParentPos.empty()) {
-                    ParentPos.pop();
+                if (!parentPos.empty()) {
+                    parentPos.pop();
                 } else {
-                    ParentPos.push(i);
+                    parentPos.push(i);
                 }
             }
         }
 
-        if (ParentPos.empty())
+        if (parentPos.empty())
             System.out.println("Parentness string is right format");
         else {
             System.out.println("Parentness string is not in right format");
-            while (!ParentPos.empty()) {
-                System.out.println("at position : " + ParentPos.peek());
-                ParentPos.pop();
+            while (!parentPos.empty()) {
+                System.out.println("at position : " + parentPos.peek());
+                parentPos.pop();
             }
         }
     }
